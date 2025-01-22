@@ -1,0 +1,38 @@
+
+services:
+  backend:
+    build:
+      context: ./web-quest-backend
+    container_name: quest_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./web-quest-backend:/app
+    environment:
+      DATABASE_URL: postgresql://user:password@pg:5432/shop  # Подключение к БД
+
+  pg:
+    image: postgres
+    container_name: quest_postgres
+    environment:
+      POSTGRES_DB: quest
+      POSTGRES_USER: Mikhail
+      POSTGRES_PASSWORD: pCLFhBegMPzZt26
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    container_name: quest_adminer
+    ports:
+      - "8080:8080"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: quest_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
