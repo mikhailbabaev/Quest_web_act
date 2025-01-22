@@ -9,14 +9,14 @@ services:
     volumes:
       - ./web-quest-backend:/app
     environment:
-      DATABASE_URL: postgresql://user:password@pg:5432/shop  # Подключение к БД
+      DATABASE_URL: postgresql://user:password@pg:5432/quests_bot_db  # Подключение к БД
 
   pg:
     image: postgres
     container_name: quest_postgres
     environment:
-      POSTGRES_DB: quest
-      POSTGRES_USER: Mikhail
+      POSTGRES_DB: quests_bot_db
+      POSTGRES_USER: postgresql
       POSTGRES_PASSWORD: pCLFhBegMPzZt26
     ports:
       - "5432:5432"
